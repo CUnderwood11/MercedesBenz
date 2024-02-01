@@ -50,6 +50,20 @@ text-align: center;
 margin-bottom: 10px;
 }
 
+.model-info button {
+    background-color: #ff9900;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.model-info button:hover {
+    background-color: #ffa733; /* Change color on hover if desired */
+}
+
 .model-info img{
 max-width: 100%;
 height: 100%;
