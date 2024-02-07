@@ -1,0 +1,62 @@
+[
+  {
+    "modelName": "C36 AMG",
+    "imageUrl": "/Images/c36-amg.jpg",
+    "productionYears": "1995-1997",
+    "engine": "3.6L L6",
+    "horsepower": "280 hp",
+    "torque": "284 lb-ft",
+    "zeroToSixty": "6.7 seconds",
+    "cost": "$XX,XXX"
+  },
+  {
+    "modelName": "C43 AMG",
+    "imageUrl": "/Images/c43-amg.jpg",
+    "productionYears": "1997-2000",
+    "engine": "4.3L V8",
+    "horsepower": "306 hp",
+    "torque": "302 lb-ft",
+    "zeroToSixty": "6.5 seconds",
+    "cost": "$XX,XXX"
+  },
+  {
+    "modelName": "C55 AMG",
+    "imageUrl": "/Images/c55-amg.jpg",
+    "productionYears": "1995-1997",
+    "engine": "3.6L L6",
+    "horsepower": "280 hp",
+    "torque": "284 lb-ft",
+    "zeroToSixty": "6.7 seconds",
+    "cost": "$XX,XXX"
+  },
+  {
+    "modelName": "C63 AMG",
+    "imageUrl": "/Images/c63-amg.jpg",
+    "productionYears": "1995-1997",
+    "engine": "3.6L L6",
+    "horsepower": "280 hp",
+    "torque": "284 lb-ft",
+    "zeroToSixty": "6.7 seconds",
+    "cost": "$XX,XXX"
+  },
+  {
+    "modelName": "C450 AMG",
+    "imageUrl": "/Images/c450-amg.jpg",
+    "productionYears": "1995-1997",
+    "engine": "3.6L L6",
+    "horsepower": "280 hp",
+    "torque": "284 lb-ft",
+    "zeroToSixty": "6.7 seconds",
+    "cost": "$XX,XXX"
+  },
+  {
+  "modelName": "C63S AMG",
+  "imageUrl": "/Images/c63s-amg.jpg",
+  "productionYears": "1995-1997",
+  "engine": "3.6L L6",
+  "horsepower": "280 hp",
+  "torque": "284 lb-ft",
+  "zeroToSixty": "6.7 seconds",
+  "cost": "$XX,XXX"
+  }
+]

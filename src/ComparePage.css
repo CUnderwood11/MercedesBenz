@@ -1,0 +1,32 @@
+.compare-page-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.model-container {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.model-image {
+  max-width: 300px;
+  max-height: 200px;
+  margin-bottom: 20px;
+}
+
+.model-details-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.model-details-table th,
+.model-details-table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.model-details-table th {
+  background-color: #f2f2f2;
+}

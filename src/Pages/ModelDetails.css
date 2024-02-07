@@ -1,0 +1,39 @@
+/* ModelDetail.css */
+
+.model-detail {
+    display: flex;
+    max-width: 800px; /* Adjust as needed */
+    margin: auto;
+}
+
+.model-photo {
+    flex: 1;
+    padding: 40px;
+}
+
+.model-photo img {
+    max-width: 100%; /* Adjust as needed */
+    height: auto;
+}
+
+.model-info {
+    flex: 2;
+    padding: 20px;
+    background-color: #f0f0f0; /* Background color for the info box */
+    border: 1px solid #ddd; /* Border for the info box */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for the info box */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .model-detail {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+
+    .model-photo,
+    .model-info {
+        flex: none; /* Remove flex grow/shrink for each item */
+        width: 100%; /* Make each item take full width on smaller screens */
+    }
+}
