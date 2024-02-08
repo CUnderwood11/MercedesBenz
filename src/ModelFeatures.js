@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const ModelFeatures = () => {
     const models = ['C36 AMG', 'C43 AMG', 'C55 AMG', 'C63 AMG', 'C450 AMG', 'C63S AMG'];
@@ -18,7 +19,10 @@ const ModelFeatures = () => {
                         style={{ maxWidth: '100%', height: 'auto', maxHeight: '100px' }}
                     />
                     <h3>{model}</h3>
-                    <button>View Details</button>
+                    {/* Update the link to point to the corresponding detail page */}
+                    <Link to={`/model/${model}`} className="btn-details">
+                        View Details
+                    </Link>
                 </div>
             ))}
         </section>

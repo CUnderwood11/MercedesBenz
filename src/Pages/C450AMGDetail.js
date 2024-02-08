@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './ModelDetails.css';
+import './ModelDetail.css';
 
 const C450AMGDetail = () => {
 return(
