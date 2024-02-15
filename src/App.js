@@ -28,7 +28,7 @@ function App() {
           <Route path="/model/C63 AMG" element={<C63AMGDetail />} />
           <Route path="/model/C450 AMG" element={<C450AMGDetail />} />
           <Route path="/model/C63S AMG" element={<C63SAMGDetail />} />
-          <Route path="/compare" element={<ComparePage />} />
+          <Route path="/compare/:modelName" element={<ComparePage />} />
         </Routes>
         <Footer />
       </div>

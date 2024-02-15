@@ -1,31 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './ModelDetail.css';
+import amgModelsData from '../amgModels.json'; // Import the JSON file
 
 const C43AMGDetail = () => {
-return(
+  // Find the selected model's information from the JSON data
+  const selectedModel = amgModelsData.find(model => model.modelName === "C43 AMG");
+
+  return (
     <div className="model-detail">
-        <div className="model-photo">
-            <img src="/Images/c43-amg.jpg" alt="C43 AMG" />
-        </div>
-        <div className="model-info">
-        <h2>C43 AMG Details</h2>
+      <div className="model-photo">
+        <img src={selectedModel.imageUrl} alt={selectedModel.modelName} />
+      </div>
+      <div className="model-info">
+        <h2>{selectedModel.modelName} Details</h2>
         <p>
-            The C43 AMG is a high performance variant of the Mercedes-Benz C-Class,
-            produced by AMG. It features a powerful engine, sporty styling, and advanced technology.
+          The {selectedModel.modelName} is a high-performance variant of the Mercedes-Benz C-Class,
+          produced by AMG. It features a powerful engine, sporty styling, and advanced technology.
         </p>
         <ul>
-            <li>Production Years: 1997-2000</li>
-            <li>Engine: 4.3L V8</li>
-            <li>Horsepower: 306 HP</li>
-            <li>Torque: 302 lb-ft</li>
-            <li>0-60 mph: 6.5 seconds</li>
+          <li>Production Years: {selectedModel.productionYears}</li>
+          <li>Engine: {selectedModel.engine}</li>
+          <li>Horsepower: {selectedModel.horsepower}</li>
+          <li>Torque: {selectedModel.torque}</li>
+          <li>0-60 mph: {selectedModel.zeroToSixty}</li>
         </ul>
-        <Link to="/compare">Compare Details</Link>
+        {/* Include the selected model information in the link's state */}
+        <Link
+          to={{
+             pathname: `/compare/${selectedModel.modelName}`,
+            state: { initialModel: selectedModel }
+          }}
+        >
+          Compare Details
+        </Link>
+      </div>
     </div>
-   </div>
-);
-
+  );
 };
 
 export default C43AMGDetail;
+

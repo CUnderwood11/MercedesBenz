@@ -1,31 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './ModelDetail.css';
+import amgModelsData from '../amgModels.json'; // Import the JSON file
 
 const C450AMGDetail = () => {
-return(
+  // Find the selected model's information from the JSON data
+  const selectedModel = amgModelsData.find(model => model.modelName === "C450 AMG");
+
+  return (
     <div className="model-detail">
-        <div className="model-photo">
-            <img src="/Images/c450-amg.jpg" alt="C450 AMG" />
-        </div>
-        <div className="model-info">
-        <h2>C450 AMG Details</h2>
+      <div className="model-photo">
+        <img src={selectedModel.imageUrl} alt={selectedModel.modelName} />
+      </div>
+      <div className="model-info">
+        <h2>{selectedModel.modelName} Details</h2>
         <p>
-            The C450 AMG is a high performance variant of the Mercedes-Benz C-Class,
-            produced by AMG. It features a powerful engine, sporty styling, and advanced technology.
+          The {selectedModel.modelName} is a high-performance variant of the Mercedes-Benz C-Class,
+          produced by AMG. It features a powerful engine, sporty styling, and advanced technology.
         </p>
         <ul>
-            <li>Production Years: 2014-2015</li>
-            <li>Engine: 3.0L V6</li>
-            <li>Horsepower: 367 HP</li>
-            <li>Torque: 384 ft-lb</li>
-            <li>0-60 mph: 4.7 seconds</li>
+          <li>Production Years: {selectedModel.productionYears}</li>
+          <li>Engine: {selectedModel.engine}</li>
+          <li>Horsepower: {selectedModel.horsepower}</li>
+          <li>Torque: {selectedModel.torque}</li>
+          <li>0-60 mph: {selectedModel.zeroToSixty}</li>
         </ul>
-        <Link to="/compare">Compare Details</Link>
+        {/* Include the selected model information in the link's state */}
+        <Link
+          to={{
+             pathname: `/compare/${selectedModel.modelName}`,
+            state: { initialModel: selectedModel }
+          }}
+        >
+          Compare Details
+        </Link>
+      </div>
     </div>
-   </div>
-);
-
+  );
 };
 
 export default C450AMGDetail;

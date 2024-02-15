@@ -7,7 +7,7 @@
     "horsepower": "280 hp",
     "torque": "284 lb-ft",
     "zeroToSixty": "6.7 seconds",
-    "cost": "$XX,XXX"
+    "cost": "$51,750"
   },
   {
     "modelName": "C43 AMG",
@@ -17,46 +17,46 @@
     "horsepower": "306 hp",
     "torque": "302 lb-ft",
     "zeroToSixty": "6.5 seconds",
-    "cost": "$XX,XXX"
+    "cost": "$53,000"
   },
   {
     "modelName": "C55 AMG",
     "imageUrl": "/Images/c55-amg.jpg",
-    "productionYears": "1995-1997",
-    "engine": "3.6L L6",
-    "horsepower": "280 hp",
-    "torque": "284 lb-ft",
-    "zeroToSixty": "6.7 seconds",
-    "cost": "$XX,XXX"
+    "productionYears": "2004-2007",
+    "engine": "5.4L V8",
+    "horsepower": "367 hp",
+    "torque": "376 lb-ft",
+    "zeroToSixty": "4.9 seconds",
+    "cost": "$54,450"
   },
   {
     "modelName": "C63 AMG",
     "imageUrl": "/Images/c63-amg.jpg",
-    "productionYears": "1995-1997",
-    "engine": "3.6L L6",
-    "horsepower": "280 hp",
-    "torque": "284 lb-ft",
-    "zeroToSixty": "6.7 seconds",
-    "cost": "$XX,XXX"
+    "productionYears": "2007-2015",
+    "engine": "6.2L V8",
+    "horsepower": "457 hp",
+    "torque": "443 lb-ft",
+    "zeroToSixty": "4.5 seconds",
+    "cost": "$68,600"
   },
   {
     "modelName": "C450 AMG",
     "imageUrl": "/Images/c450-amg.jpg",
     "productionYears": "1995-1997",
-    "engine": "3.6L L6",
-    "horsepower": "280 hp",
-    "torque": "284 lb-ft",
-    "zeroToSixty": "6.7 seconds",
-    "cost": "$XX,XXX"
+    "engine": "3.0L Twin Turbo V6",
+    "horsepower": "367 hp",
+    "torque": "384 lb-ft",
+    "zeroToSixty": "4.7 seconds",
+    "cost": "$50,800"
   },
   {
   "modelName": "C63S AMG",
   "imageUrl": "/Images/c63s-amg.jpg",
-  "productionYears": "1995-1997",
-  "engine": "3.6L L6",
-  "horsepower": "280 hp",
-  "torque": "284 lb-ft",
-  "zeroToSixty": "6.7 seconds",
-  "cost": "$XX,XXX"
+  "productionYears": "2015-2022",
+  "engine": "4.0L Twin Turbo V8",
+  "horsepower": "510 hp",
+  "torque": "516 lb-ft",
+  "zeroToSixty": "3.9 seconds",
+  "cost": "$69,650"
   }
 ]
