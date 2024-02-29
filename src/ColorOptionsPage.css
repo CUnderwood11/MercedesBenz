@@ -1,0 +1,30 @@
+/* ColorOptionsPage.css */
+
+.color-options-page {
+  display: flex;
+}
+
+.exterior-colors,
+.interior-colors {
+  flex: 1; /* Each section occupies equal space */
+  padding: 0 10px; /* Add padding for spacing */
+  text-align: center; /* Center text */
+}
+
+.interior-colors {
+  margin-left: 20px; /* Add margin to separate the sections */
+}
+
+h2 {
+  text-align: center; /* Center the headings */
+}
+
+ul {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0;
+  margin-top: 0; /* Remove default margin */
+}
+
+li {
+  margin-bottom: 8px; /* Add spacing between color options */
+}

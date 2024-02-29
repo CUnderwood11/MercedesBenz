@@ -1,16 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import API_BASE_URL from './config'
 
 const CTASection = () => {
-return(
- <section className="cta-section">
- <button>Embark on a Thrilling Journey - Explore AMG C-Class Models!</button>
- <form>
-    <label>Name:</label>
-    <input type="text" placeholder="Your Name" />
-    <button type="submit">Subscribe</button>
- </form>
- </section>
-);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post(`${API_BASE_URL}/subscribe`, { name, email });
+      alert('Subscription successful!');
+      setName('');
+      setEmail('');
+    } catch (error) {
+      console.error('Error subscribing:', error);
+      alert('An error occurred. Please try again later.');
+    }
+  };
+
+  return (
+    <section className="cta-section">
+      <button>Embark on a Thrilling Journey - Explore AMG C-Class Models!</button>
+      <form onSubmit={handleSubmit} method="POST" action="/subscribe">
+        <label>Name:</label>
+        <input
+          type="text"
+          placeholder="Your Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <label>Email:</label>
+        <input
+          type="email"
+          placeholder="Your Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+  );
 };
 
 export default CTASection;

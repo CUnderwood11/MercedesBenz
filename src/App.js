@@ -14,6 +14,7 @@ import C63AMGDetail from './Pages/C63AMGDetail';
 import C450AMGDetail from './Pages/C450AMGDetail';
 import C63SAMGDetail from './Pages/C63SAMGDetail';
 import ComparePage from './ComparePage';
+import ColorOptionsPage from './ColorOptionsPage';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/model/C450 AMG" element={<C450AMGDetail />} />
           <Route path="/model/C63S AMG" element={<C63SAMGDetail />} />
           <Route path="/compare/:modelName" element={<ComparePage />} />
+          <Route path="/colors/:modelName" element={<ColorOptionsPage />} />
         </Routes>
         <Footer />
       </div>

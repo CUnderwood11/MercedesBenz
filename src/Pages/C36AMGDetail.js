@@ -1,11 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './ModelDetail.css';
-import amgModelsData from '../amgModels.json'; // Import the JSON file
+import amgModelsData from '../amgModels.json';
 
 const C36AMGDetail = () => {
-  // Find the selected model's information from the JSON data
   const selectedModel = amgModelsData.find(model => model.modelName === "C36 AMG");
+  const navigate = useNavigate();
+
+  const navigateToColorOptions = () => {
+    navigate(`/colors/${selectedModel.modelName}`);
+  };
+
+  const navigateToCompare = () => {
+    navigate(`/compare/${selectedModel.modelName}`);
+  };
 
   return (
     <div className="model-detail">
@@ -25,15 +33,11 @@ const C36AMGDetail = () => {
           <li>Torque: {selectedModel.torque}</li>
           <li>0-60 mph: {selectedModel.zeroToSixty}</li>
         </ul>
-        {/* Include the selected model information in the link's state */}
-        <Link
-          to={{
-             pathname: `/compare/${selectedModel.modelName}`,
-            state: { initialModel: selectedModel }
-          }}
-        >
-          Compare Details
-        </Link>
+        {/* Buttons with space between them */}
+        <div className="button-group">
+          <button className="action-button" onClick={navigateToColorOptions}>View Color Options</button>
+          <button className="action-button" onClick={navigateToCompare}>Compare Details</button>
+        </div>
       </div>
     </div>
   );
