@@ -1,43 +1,127 @@
-// Import necessary packages
 const express = require('express');
-const mysql = require('mysql');
-const cors = require('cors'); //
+const mysql = require('mysql2');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+require('dotenv').config();
+
+const app = express();
+const port = process.env.PORT || 3001;
+
+app.use(cors());
+app.use(bodyParser.json());
 
 
 const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root@localhost',
-  password: '123456Yes',
-  database: 'SubscribeButton'
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASS || '123456Yes',
+    database: process.env.DB_NAME || 'mercedes',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
-const app = express();
 
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
 
-app.use(express.json());
+// Routes
+app.get('/api/models/:modelName', (req, res) => {
+    const modelName = req.params.modelName;
+    console.log("model requested:", modelName);
+    pool.query('SELECT * FROM models WHERE modelName = ?', [modelName], (err, results) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+        if (results.length > 0) {
+            res.json(results[0]);
+        } else {
+            res.status(404).json({ error: 'Model not found' });
+        }
+    });
+});
 
+app.get('/api/colors/:modelName', (req, res) => {
+    const modelName = req.params.modelName;
 
-app.use(cors());
+    const query = `
+        SELECT
+            m.id AS modelId,
+            m.modelName,
+            GROUP_CONCAT(DISTINCT e.colorName ORDER BY e.colorName) AS ExteriorColors,
+            GROUP_CONCAT(DISTINCT i.colorName ORDER BY i.colorName) AS InteriorColors
+        FROM
+            models m
+        LEFT JOIN
+            exteriorColors e ON m.id = e.modelId
+        LEFT JOIN
+            interiorColors i ON m.id = i.modelId
+        WHERE
+            m.modelName = ?
+        GROUP BY
+            m.id, m.modelName;
+    `;
 
+    pool.query(query, [modelName], (err, results) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+        if (results.length > 0) {
+            res.json({
+                modelName: results[0].modelName,
+                exteriorColors: results[0].ExteriorColors ? results[0].ExteriorColors.split(',') : [],
+                interiorColors: results[0].InteriorColors ? results[0].InteriorColors.split(',') : []
+            });
+        } else {
+            res.status(404).json({ error: 'Model not found' });
+        }
+    });
+});
 
-app.post('/subscribe', (req, res) => {
+app.get('/api/models/details/:modelName', (req, res) => {
+    const modelName = req.params.modelName;
+    pool.query('SELECT * FROM models WHERE modelName = ?', [modelName], (err, results) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+        if (results.length > 0) {
+            res.json(results[0]);
+        } else {
+            res.status(404).json({ error: 'Model not found' });
+        }
+    });
+});
 
+app.get('/api/models', (req, res) => {
+    pool.query('SELECT * FROM models', (err, results) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+        res.json(results);
+    });
+});
+
+app.post('/api/subscribe', (req, res) => {
   const { name, email } = req.body;
+  if (!name || !email) {
+    return res.status(400).json({ error: 'Name and email are required' });
+  }
 
-  const sql = 'INSERT INTO subscribers (name, email) VALUES (?, ?)';
-
-  pool.query(sql, [name, email], (error, results) => {
-    if (error) {
-      console.error('Error inserting subscriber:', error);
-      res.status(500).json({ error: 'An error occurred while inserting data' });
-    } else {
-      console.log('Subscriber added successfully');
-      res.status(200).json({ message: 'Subscriber added successfully' });
+  pool.query('INSERT INTO subscribers (name, email) VALUES (?, ?)', [name, email], (err, results) => {
+    if (err) {
+      console.error('Database error:', err);
+      return res.status(500).json({ error: 'Internal server error' });
     }
+    res.status(201).json({ message: 'Subscription successful!' });
   });
 });
 
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });

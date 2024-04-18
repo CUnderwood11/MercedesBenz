@@ -1,27 +1,43 @@
-import React from 'react';
-import { useParams } from 'react-router-dom'; // Import useParams to access route parameters
-import colorsData from './colors.json';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './ColorOptionsPage.css';
 
 const ColorOptionsPage = () => {
-  // Access the modelName parameter from the URL
   const { modelName } = useParams();
+  const [colors, setColors] = useState({ exteriorColors: [], interiorColors: [] });
+  const [loading, setLoading] = useState(true);
 
-  // Fetch color options for the selected model
-  const modelColors = colorsData.models[modelName];
+  useEffect(() => {
+    fetch(`http://localhost:3001/api/colors/${encodeURIComponent(modelName)}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        setColors({
+          exteriorColors: data.exteriorColors || [],
+          interiorColors: data.interiorColors || []
+        });
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+      });
+  }, [modelName]);
 
-  if (!modelColors) {
-    return <div>Model not found</div>;
+  if (loading) {
+    return <div>Loading color options...</div>;
   }
-
-  const { exteriorColors, interiorColors } = modelColors;
 
   return (
     <div className="color-options-page">
       <div className="exterior-colors">
         <h2>Exterior Colors</h2>
         <ul>
-          {exteriorColors.map((color, index) => (
+          {colors.exteriorColors.map((color, index) => (
             <li key={index}>{color}</li>
           ))}
         </ul>
@@ -29,7 +45,7 @@ const ColorOptionsPage = () => {
       <div className="interior-colors">
         <h2>Interior Colors</h2>
         <ul>
-          {interiorColors.map((color, index) => (
+          {colors.interiorColors.map((color, index) => (
             <li key={index}>{color}</li>
           ))}
         </ul>

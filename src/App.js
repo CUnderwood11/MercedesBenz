@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './Header';
 import HeroSection from './HeroSection';
 import ModelFeatures from './ModelFeatures';
-import InteractiveFeatures from './InteractiveFeatures';
 import CTASection from './CTASection';
 import Footer from './Footer';
 import './App.css';
@@ -15,6 +14,7 @@ import C450AMGDetail from './Pages/C450AMGDetail';
 import C63SAMGDetail from './Pages/C63SAMGDetail';
 import ComparePage from './ComparePage';
 import ColorOptionsPage from './ColorOptionsPage';
+import About from './About';
 
 function App() {
   return (
@@ -30,6 +30,7 @@ function App() {
           <Route path="/model/C450 AMG" element={<C450AMGDetail />} />
           <Route path="/model/C63S AMG" element={<C63SAMGDetail />} />
           <Route path="/compare/:modelName" element={<ComparePage />} />
+          <Route path="/about" element={<About />} />
           <Route path="/colors/:modelName" element={<ColorOptionsPage />} />
         </Routes>
         <Footer />
@@ -42,7 +43,6 @@ const HomePage = () => (
   <>
     <HeroSection />
     <ModelFeatures />
-    <InteractiveFeatures />
     <CTASection />
   </>
 );

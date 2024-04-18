@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import API_BASE_URL from './config'
 
 const CTASection = () => {
   const [name, setName] = useState('');
@@ -9,7 +8,7 @@ const CTASection = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post(`${API_BASE_URL}/subscribe`, { name, email });
+      await axios.post(`http://localhost:3001/api/subscribe`, { name, email });
       alert('Subscription successful!');
       setName('');
       setEmail('');
@@ -22,7 +21,7 @@ const CTASection = () => {
   return (
     <section className="cta-section">
       <button>Embark on a Thrilling Journey - Explore AMG C-Class Models!</button>
-      <form onSubmit={handleSubmit} method="POST" action="/subscribe">
+      <form onSubmit={handleSubmit} method="POST" action="/api/subscribe">
         <label>Name:</label>
         <input
           type="text"

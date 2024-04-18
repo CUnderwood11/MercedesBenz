@@ -8,6 +8,8 @@
   flex: 1;
   padding: 20px;
   text-align: center;
+  border: 1px solid #ddd; /* Add border */
+  margin: 10px; /* Add margin for spacing */
 }
 
 .model-image {
@@ -24,7 +26,7 @@
 .model-details-table th,
 .model-details-table td {
   padding: 8px;
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd; /* Add line underneath text */
 }
 
 .model-details-table th {
