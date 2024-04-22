@@ -11,7 +11,6 @@ const ComparePage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Initially set loading to true and error to null
     setLoading(true);
     setError(null);
 
@@ -62,12 +61,11 @@ const ComparePage = () => {
 
   return (
     <div className="compare-page-container">
-      {/* Display Selected Model */}
+      {/* Initial Model Container */}
       <div className="model-container">
-        <h2>Selected Model</h2>
         {initialModel ? (
           <>
-            <h3>{initialModel.modelName}</h3>
+            <h2>{initialModel.modelName}</h2>
             <img className="model-image" src={initialModel.imageUrl} alt={initialModel.modelName} />
             <p>Engine: {initialModel.engineSpecs}</p>
             <p>Horsepower: {initialModel.horsepower}</p>
@@ -78,18 +76,21 @@ const ComparePage = () => {
         ) : <p>No model selected or data available.</p>}
       </div>
 
-      {/* Display Comparison Model */}
-      <div className="model-container">
-        <h2>Select a Model to Compare</h2>
-        <select onChange={handleSelectModel} value={compareModel?.modelName || ''}>
+      {/* Dropdown for selecting a model to compare */}
+      <div className="model-select-container">
+        <select className="model-select" onChange={handleSelectModel} value={compareModel?.modelName || ''}>
           <option value="">-- Select Model --</option>
           {models.map((model) => (
             <option key={model.id} value={model.modelName}>{model.modelName}</option>
           ))}
         </select>
-        {compareModel && (
+      </div>
+
+      {/* Comparison Model Container */}
+      <div className="model-container">
+        {compareModel ? (
           <>
-            <h3>{compareModel.modelName}</h3>
+            <h2>{compareModel.modelName}</h2>
             <img className="model-image" src={compareModel.imageUrl} alt={compareModel.modelName} />
             <p>Engine: {compareModel.engineSpecs}</p>
             <p>Horsepower: {compareModel.horsepower}</p>
@@ -97,7 +98,7 @@ const ComparePage = () => {
             <p>0-60 mph: {compareModel.zeroToSixty}</p>
             <p>Cost: {compareModel.cost}</p>
           </>
-        )}
+        ) : <p>No comparison model selected or data available.</p>}
       </div>
     </div>
   );

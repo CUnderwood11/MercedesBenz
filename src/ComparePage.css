@@ -1,15 +1,15 @@
 .compare-page-container {
   display: flex;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .model-container {
   flex: 1;
   padding: 20px;
   text-align: center;
-  border: 1px solid #ddd; /* Add border */
-  margin: 10px; /* Add margin for spacing */
+  border: 1px solid #ddd;
+  margin: 10px;
 }
 
 .model-image {

@@ -2,7 +2,7 @@
 
 .model-detail {
     display: flex;
-    max-width: 800px; /* Adjust as needed */
+    max-width: 800px;
     margin: auto;
 }
 
@@ -12,28 +12,49 @@
 }
 
 .model-photo img {
-    max-width: 100%; /* Adjust as needed */
+    max-width: 100%;
+    border-radius: 5px;
     height: auto;
 }
 
 .model-info {
     flex: 2;
     padding: 20px;
-    background-color: #f0f0f0; /* Background color for the info box */
-    border: 1px solid #ddd; /* Border for the info box */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for the info box */
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Media query for smaller screens */
+
 @media (max-width: 768px) {
     .model-detail {
-        flex-direction: column; /* Stack items vertically on smaller screens */
+        flex-direction: column;
     }
 
     .model-photo,
     .model-info {
-        flex: none; /* Remove flex grow/shrink for each item */
-        width: 100%; /* Make each item take full width on smaller screens */
+        flex: none;
+        width: 100%;
     }
+}
+.button-group {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.action-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #0056b3;
 }

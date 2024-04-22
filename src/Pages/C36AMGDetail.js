@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Make sure to import useNavigate
-import './ModelDetail.css'; // Assuming you have general CSS for model details
+import { useNavigate } from 'react-router-dom';
+import './ModelDetail.css';
 
 const C36AMGDetail = () => {
   const [modelDetails, setModelDetails] = useState(null);
-  const navigate = useNavigate(); // Initialize navigate using the useNavigate hook
+  const navigate = useNavigate();
 
   useEffect(() => {
     const modelName = 'C36 AMG';

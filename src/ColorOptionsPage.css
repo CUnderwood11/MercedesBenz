@@ -6,25 +6,27 @@
 
 .exterior-colors,
 .interior-colors {
-  flex: 1; /* Each section occupies equal space */
-  padding: 0 10px; /* Add padding for spacing */
-  text-align: center; /* Center text */
+  flex: 1;
+  padding: 0 10px;
+  text-align: center;
+  border-right: 1px solid #ccc;
 }
 
 .interior-colors {
-  margin-left: 20px; /* Add margin to separate the sections */
+  margin-left: 20px;
 }
 
 h2 {
-  text-align: center; /* Center the headings */
+  text-align: center;
 }
 
 ul {
-  list-style-type: none; /* Remove default bullet points */
+  list-style-type: none;
   padding: 0;
-  margin-top: 0; /* Remove default margin */
+  margin-top: 0;
 }
 
 li {
-  margin-bottom: 8px; /* Add spacing between color options */
+  margin-bottom: 8px;
+  border-bottom: 1px solid #ddd;
 }
